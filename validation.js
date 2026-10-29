@@ -1,7 +1,7 @@
 import { PARTS, CARDIO_TYPES } from './domain.js';
 
 /** UI-facing validation. The database separately checks backup size and bytes. */
-const DEFAULT_PROFILE = Object.freeze({ name: 'Cong', weight: 70, weightConfirmed: false, weeklyGoal: 3, restSeconds: 90 });
+const DEFAULT_PROFILE = Object.freeze({ name: '训练伙伴', weight: 70, weightConfirmed: false, weeklyGoal: 3, restSeconds: 90 });
 const TOKEN = /^[A-Za-z0-9_-]{1,200}$/;
 const PART_IDS = new Set(PARTS.filter(part => part.id !== 'all').map(part => part.id));
 const CARDIO_IDS = new Set(CARDIO_TYPES.map(type => type.id));
