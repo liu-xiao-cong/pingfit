@@ -1,4 +1,5 @@
 import { PARTS, CARDIO_TYPES } from './domain.js';
+import { normalizeTrainingProgram } from './training.js';
 
 /** UI-facing validation. The database separately checks backup size and bytes. */
 const DEFAULT_PROFILE = Object.freeze({ name: '训练伙伴', weight: 70, weightConfirmed: false, weeklyGoal: 3, restSeconds: 90 });
@@ -50,6 +51,24 @@ function unique(records, key, label) {
   }
 }
 
+function normalizePrefill(input) {
+  const prefill = requireObject(input, '上次训练来源');
+  return {
+    sessionId: token(prefill.sessionId, '上次训练来源 ID'),
+    startedAt: timestamp(prefill.startedAt, '上次训练来源时间'),
+  };
+}
+
+function normalizeCycle(input) {
+  const cycle = requireObject(input, '训练轮换');
+  const rotationKey = text(cycle.rotationKey, '训练轮换顺序', 5000, false);
+  const ids = rotationKey.split('|');
+  if (rotationKey !== cycle.rotationKey || !ids.length || ids.length > 20 || new Set(ids).size !== ids.length || ids.some(id => !TOKEN.test(id))) invalid('训练轮换顺序');
+  const routineId = token(cycle.routineId, '轮换模板 ID');
+  if (!ids.includes(routineId)) invalid('轮换模板关联');
+  return { rotationKey, routineId };
+}
+
 /** Never trust an imported profile or merge it into an existing user's state. */
 export function normalizeProfile(input) {
   const source = object(input) ? input : {};
@@ -68,10 +87,12 @@ export function normalizeProfile(input) {
 function normalizeSet(input) {
   const set = requireObject(input, '训练组');
   if (typeof set.done !== 'boolean') invalid('训练组完成状态');
+  const kind = set.kind === undefined ? 'work' : set.kind;
+  if (!['work', 'warmup'].includes(kind)) invalid('训练组类型');
   return {
     ...set, id: token(set.id, '训练组 ID'),
     weight: number(set.weight, '训练重量', 0, 2000),
-    reps: number(set.reps, '次数或保持秒数', 1, 3600, true), done: set.done,
+    reps: number(set.reps, '次数或保持秒数', 1, 3600, true), done: set.done, kind,
   };
 }
 
@@ -86,6 +107,9 @@ function normalizeExercise(input) {
     ...exercise, id: token(exercise.id, '训练动作 ID'), exerciseId: token(exercise.exerciseId, '动作类型 ID'),
     name: text(exercise.name, '动作名称', 300, false), equipment: text(exercise.equipment, '器械名称', 500, false),
     part: exercise.part, unit: exercise.unit, sets,
+    ...(exercise.restSeconds !== undefined ? { restSeconds: number(exercise.restSeconds, '动作休息时长', 0, 900, true) } : {}),
+    ...(exercise.prefill !== undefined ? { prefill: normalizePrefill(exercise.prefill) } : {}),
+    ...(exercise.equipmentId !== undefined ? { equipmentId: token(exercise.equipmentId, '器械 ID') } : {}),
   };
 }
 
@@ -121,6 +145,9 @@ function normalizeSession(input) {
   const runningSince = clock(session.runningSince, '训练开始计时');
   const restEndsAt = clock(session.restEndsAt, '组间休息计时');
   if (session.status === 'completed' && (runningSince !== null || restEndsAt !== null)) invalid('已完成训练的计时状态');
+  const routineId = session.routineId === undefined ? undefined : token(session.routineId, '训练模板 ID');
+  const cycle = session.cycle === undefined ? undefined : normalizeCycle(session.cycle);
+  if (cycle && routineId !== undefined && cycle.routineId !== routineId) invalid('训练轮换与模板关联');
   return {
     ...session, id: token(session.id, '训练记录 ID'),
     startedAt: timestamp(session.startedAt, '训练开始时间'),
@@ -130,6 +157,9 @@ function normalizeSession(input) {
     title: session.title === undefined ? '' : text(session.title, '训练名称', 60),
     notes: text(session.notes, '训练笔记', 10000), feeling: text(session.feeling, '训练感受', 100),
     exercises, cardio, photoIds,
+    ...(routineId !== undefined ? { routineId } : {}),
+    ...(session.routineName !== undefined ? { routineName: text(session.routineName, '训练模板名称', 60, false) } : {}),
+    ...(cycle ? { cycle } : {}),
   };
 }
 
@@ -178,7 +208,14 @@ export function validateAppBackup(input) {
     const setting = requireObject(inputSetting, '设置');
     if (!Object.hasOwn(setting, 'value')) invalid('设置值');
     const key = token(setting.key, '设置名称');
-    return { key, value: key === 'profile' ? normalizeProfile(setting.value) : setting.value };
+    let value = setting.value;
+    if (key === 'profile') value = normalizeProfile(value);
+    if (key === 'trainingProgram') {
+      requireObject(value, '训练计划设置');
+      try { value = normalizeTrainingProgram(value, { strict: true }); }
+      catch { invalid('训练计划设置'); }
+    }
+    return { key, value };
   });
   for (const [key, records] of Object.entries({ sessions, photos, favorites, settings })) unique(records, key === 'settings' ? 'key' : 'id', key);
   if (sessions.filter(session => session.status === 'active').length > 1) invalid('未完成训练数量（仅支持一场）');
