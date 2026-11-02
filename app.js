@@ -1,5 +1,7 @@
 import {PARTS,EXERCISES,PLANS,CARDIO_TYPES,createSession,createSet,summarizeSession,summarizeCardio,weeklySummary,localDateKey} from './domain.js';
 import * as db from './db.js';
+import {APP_VERSION} from './app-version.js';
+import {mountAppUpdates} from './app-updates.js';
 import {preparePhoto,recognizeWorkoutImage} from './photos.js';
 import {normalizeProfile,validateAppBackup} from './validation.js';
 import {getDailyCovers,mountCoverCarousel} from './cover-carousel.js';
@@ -58,6 +60,7 @@ state.program={version:1,routines:[],rotation:[]};
 let routineDraft=null,programSaving=false;
 let coverCleanup=null;
 let demoCleanup=null;
+let appUpdates=null;
 state.equipment='all';state.offlineDemoOnly=false;
 const completed=()=>state.sessions.filter(s=>s.status==='completed');
 const elapsed=s=>Math.max(0,Number(s?.elapsedSeconds||0)+(s?.runningSince?Math.floor((Date.now()-Number(s.runningSince))/1000):0));
@@ -92,6 +95,7 @@ function modal(title,body,kind='generic'){
 function navigate(route){closeModal();if(location.hash==='#'+route){state.route=route;render();}else location.hash=route;window.scrollTo({top:0,behavior:'instant'});}
 function navHTML(){return [['home','home','今日训练'],['train','dumbbell','训练动作'],['history','calendar','训练日记'],['learn','play','教学收藏']].map(([route,i,label])=>`<a href="#${route}" class="nav-link ${state.route===route||(state.route==='workout'&&route==='train')?'active':''}" ${state.route===route?'aria-current="page"':''}>${icon(i)}<span>${label}</span></a>`).join('');}
 function renderShell(){
+  const versionLabel=document.querySelector('.app-version');if(versionLabel)versionLabel.textContent=`v${APP_VERSION}`;
   const brand=`<a class="brand" href="#home" aria-label="PingFit首页"><span class="brand-mark">${icon('dumbbell')}</span><strong class="ping-wordmark">Ping<span>Fit</span></strong></a>`;
   $('.sidebar').innerHTML=`${brand}<nav>${navHTML()}</nav><div class="nav-section">YOUR SPACE</div><button class="nav-link" data-action="program-manager">${icon('calendar')}<span>我的计划</span></button><button class="nav-link" data-action="settings">${icon('settings')}<span>个人设置</span></button><div class="sidebar-bottom"><div class="install-card"><div class="install-symbol">${icon('phone')}</div><h4>让训练，随手可及</h4><p>把PingFit添加到 iPhone 主屏幕<br>下次训练，一点就开始。</p><button data-action="install">添加到主屏幕 ${icon('arrow')}</button></div><button class="profile-button" data-action="settings"><span class="avatar">${esc(state.profile.name.slice(0,1))}</span><span><strong>${esc(state.profile.name)}</strong><small>本机训练空间 · 免登录</small></span>${icon('right')}</button></div>`;
   $('.bottom-nav').innerHTML=navHTML();
@@ -193,6 +197,7 @@ function settings(firstRun=false){
     <div class="backup-tools"><button class="button outline small" data-action="export-backup">${icon('download')}导出完整备份</button><button class="button outline small" data-action="import-backup">${icon('upload')}恢复备份</button><button class="button outline small" data-action="install">${icon('phone')}主屏幕安装</button></div>
     <p class="settings-note">备份包含训练、照片、个人设置和教程收藏。Safari 与主屏幕 App 的数据空间可能不同，请在日常使用的入口中备份。清理浏览器数据或更换设备后，需要用备份恢复。</p>
     <div class="settings-row"><div><h4>图片辅助录入</h4><p>本地识别英文与数字；器械候选来自铭牌文字。</p></div><button class="text-link" data-action="recognize">试试 ${icon('right')}</button></div>
+    <div class="settings-row"><div><h4>应用版本 v${APP_VERSION}</h4><p>视频入口未显示时，可检查并更新应用。</p></div><button class="text-link" data-action="check-update">检查更新 ${icon('right')}</button></div>
     <div class="settings-row"><div><h4>动作与热量资料</h4><p>ACE / NASM / wger · 2024 Compendium</p></div><a href="./SOURCES.md" class="text-link" target="_blank" rel="noopener">查看 ${icon('right')}</a></div><button class="text-link" style="color:#ba8572;margin-top:20px;font-size:10px" data-action="clear-data">清除这台设备的所有PingFit数据</button>`,firstRun?'onboarding':'settings');
   db.storageUsage?.().then(u=>{const el=$('#storage-status');if(el)el.textContent=u?.usage?`当前站点约使用 ${num(u.usage/1024/1024)} MB`:'训练记录与照片通过本地数据库保存';}).catch(()=>{});
 }
@@ -218,6 +223,7 @@ function readRoutineEditor(){
 async function persistProgram(program){const normalized=normalizeTrainingProgram(program,{strict:true});programSaving=true;try{await db.setSetting('trainingProgram',normalized);state.program=normalized;}finally{programSaving=false;}}
 
 async function handleAction(action,el){
+  if(action==='check-update'){const result=await appUpdates?.checkForUpdate();if(result===false)toast('检查结果已显示在页面顶部；请关闭设置面板查看。');return;}
   const id=el.dataset.id,s=state.active;
   if(storageBusy||finishing||programSaving)return toast('数据正在处理中，请稍候。');
   const readActions=new Set(['filter-offline-demo','close-modal','route','settings','install','resume','part','filter-part','clear-search','exercise','plan','history-period','calendar-day','clear-history-day','month','record','learn-exercise','platform-search','keyword','copy-query','view-photo','retry-editing','program-manager']);
@@ -335,7 +341,15 @@ window.addEventListener('online',()=>{state.offline=false;render();});window.add
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.active)saveNow().catch(()=>{});});
 window.addEventListener('pagehide',()=>{if(state.active)saveNow().catch(()=>{});});
 
-async function boot(){try{await db.initDB();await takeWriteLock();const savedProfile=await db.getSetting('profile',null);state.profile=normalizeProfile(savedProfile);await refreshData();state.route=['home','train','history','learn','workout'].includes(location.hash.slice(1))?location.hash.slice(1):'home';render();if(!savedProfile&&!state.readOnly)settings(true);if('serviceWorker'in navigator){navigator.serviceWorker.register('./sw.js').then(reg=>{if(reg.waiting)toast('新版已准备好，下次重新打开即可更新');reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&!navigator.serviceWorker.controller)toast('离线资源已准备好，可以添加到主屏幕了');});});}).catch(error=>console.warn('PingFit offline resources:',error.message));}}catch(error){$('#content').innerHTML=`<div class="fatal"><h2>暂时无法打开本地记录</h2><p>${esc(error.message)}<br>请检查 Safari 的存储空间与浏览设置后重新打开。已有备份可以在恢复正常后导入。</p><button class="button" data-action="reload">重新打开</button></div>`;document.querySelector('[data-action="reload"]')?.addEventListener('click',()=>location.reload());}}
+async function prepareAppUpdate(){
+  if(storageBusy||fileBusy||finishing||programSaving)throw new Error('请等待当前照片或数据处理完成后再更新。');
+  if(document.querySelector('#modal[open] form'))throw new Error('请先保存或关闭当前编辑面板，再更新应用。');
+  if(document.querySelector('[data-set-input]:invalid'))throw new Error('请先填写有效的训练重量和次数，再更新。');
+  await saveNow();
+  if(state.saveError)throw new Error('当前训练尚未保存成功，请重试保存后再更新。');
+}
+
+async function boot(){try{await db.initDB();await takeWriteLock();const savedProfile=await db.getSetting('profile',null);state.profile=normalizeProfile(savedProfile);await refreshData();state.route=['home','train','history','learn','workout'].includes(location.hash.slice(1))?location.hash.slice(1):'home';render();if(!savedProfile&&!state.readOnly)settings(true);appUpdates=mountAppUpdates({beforeUpdate:prepareAppUpdate,onOfflineReady:()=>toast('离线资源已准备好，可以添加到主屏幕了')});}catch(error){$('#content').innerHTML=`<div class="fatal"><h2>暂时无法打开本地记录</h2><p>${esc(error.message)}<br>请检查 Safari 的存储空间与浏览设置后重新打开。已有备份可以在恢复正常后导入。</p><button class="button" data-action="reload">重新打开</button></div>`;document.querySelector('[data-action="reload"]')?.addEventListener('click',()=>location.reload());}}
 boot();
 
 document.addEventListener('change',event=>{if(event.target.id==='equipment-filter'){state.equipment=event.target.value;render();}});
