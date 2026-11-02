@@ -89,35 +89,36 @@
 
 运行 `TZ=Asia/Shanghai node check-domain.mjs` 与 `TZ=America/New_York node check-domain.mjs`，均通过 9 组行为检查。覆盖同一有氧重复计热量、空值与 0、无效组、秒数动作、历史体重、周边界、重复记录、UTC 跨日与夏令时周。
 
-## 全动作在线视频（2026-11-02）
+## 国内在线教学与原创示意（0.3.2）
 
-新增24个原作者发布的在线教学，使用YouTube提供的公开嵌入播放器，不下载、转码、重新托管或重新授权媒体。其版权由各发布者保留；现有Goulart影片的CC BY-SA许可不适用于这些在线视频。使用YouTube隐私增强域名，点击后才加载；保留播放器品牌、控制与原站链接，按官方要求发送HTTP Referrer。参考 [YouTube嵌入说明](https://support.google.com/youtube/answer/171780?hl=zh-Hans) 与 [播放器参数](https://developers.google.com/youtube/player_parameters)。
+23 个在线教学改用哔哩哔哩发布者的具体影片，按 [B站外链播放器官方说明](https://player.bilibili.com/) 使用官方播放器，点击后才加载，默认关闭弹幕，并保留显眼的原站观看入口。不下载、转码、重新托管或重新授权这些媒体；其版权归各权利人，现有 Goulart 视频的 CC BY-SA 许可不适用于外站视频。B站的“原创”标记仅为平台投稿属性，不是转载许可。
 
-| App动作 | 影片原作者 | 一手来源 / 具体视频 | 版本提示 |
-| --- | --- | --- | --- |
-| 坐姿蹬腿 | Kenosha YMCA | [来源](https://www.kenoshaymca.org/y-videos/) · [视频](https://www.youtube.com/watch?v=QwBvFgAVOTo) | 以 LifeFitness 坐姿水平蹬腿机为例，按现场机型调节座椅。 |
-| 哑铃杯式深蹲 | Rehab My Patient | [来源](https://www.youtube.com/watch?v=oDyk2_rMR-Q) · [视频](https://www.youtube.com/watch?v=oDyk2_rMR-Q) | 按本条器械与动作步骤练习。 |
-| 徒手深蹲 | MI Health Matters | [来源](https://msu-prod-2.dotcms.cloud/videos/bodyweight-squat) · [视频](https://www.youtube.com/watch?v=3VrVQ6m2J30) | 按本条器械与动作步骤练习。 |
-| 器械提踵 | Kenosha YMCA | [来源](https://www.kenoshaymca.org/y-videos/) · [视频](https://www.youtube.com/watch?v=oVceaQM7zsk) | 示范为坐姿腿向前伸、前脚掌推踏板的提踵机。 |
-| 臀桥 | National Academy of Sports Medicine (NASM) | [来源](https://www.nasm.org/resource-center/exercise-library/floor-bridge) · [视频](https://www.youtube.com/watch?v=Z3cY3d3BBo4) | 按本条器械与动作步骤练习。 |
-| 前跨弓步蹲 | MI Health Matters | [来源](https://msu-prod-2.dotcms.cloud/videos/bodyweight-lunge) · [视频](https://www.youtube.com/watch?v=BK-ccAPaNeY) | 按本条器械与动作步骤练习。 |
-| 平板支撑 | National Academy of Sports Medicine (NASM) | [来源](https://www.nasm.org/resource-center/exercise-library/plank) · [视频](https://www.youtube.com/watch?v=mwlp75MS6Rg) | 按本条器械与动作步骤练习。 |
-| 鸟狗式 | National Academy of Sports Medicine (NASM) | [来源](https://www.nasm.org/resource-center/exercise-library/bird-dog) · [视频](https://www.youtube.com/watch?v=ZdAHe9_HeEw) | 按本条器械与动作步骤练习。 |
-| 卷腹 | NHS Fife | [来源](https://www.nhsfife.org/services/all-services/patient-advice/stage-three-exercises-for-your-tummy-muscles/) · [视频](https://www.youtube.com/watch?v=Q9tgMl1__o8) | 按本条器械与动作步骤练习。 |
-| 坐姿器械卷腹 | Kenosha YMCA | [来源](https://www.kenoshaymca.org/y-videos/) · [视频](https://www.youtube.com/watch?v=nlqEDo8odJM) | 示范为 LifeFitness 坐姿卷腹机；视频中的腿部支撑与部分机器不同，请按现场说明固定双脚和小腿。 |
-| 高位下拉 | Life Fitness / Hammer Strength | [来源](https://www.youtube.com/watch?v=nZip-pdLlQM) · [视频](https://www.youtube.com/watch?v=nZip-pdLlQM) | 按本条器械与动作步骤练习。 |
-| 坐姿高位划船 | Life Fitness / Hammer Strength | [来源](https://www.youtube.com/watch?v=Za4iRd2whOA) · [视频](https://www.youtube.com/watch?v=Za4iRd2whOA&t=224s) | 从上方宽握示范开始；调节座椅的说明可拖回视频前段查看。 |
-| 单臂哑铃划船 | National Academy of Sports Medicine (NASM) | [来源](https://www.youtube.com/watch?v=DmUX88nWClo) · [视频](https://www.youtube.com/watch?v=DmUX88nWClo) | 按本条器械与动作步骤练习。 |
-| 杠铃俯身划船 | National Academy of Sports Medicine (NASM) | [来源](https://www.youtube.com/watch?v=bm0_q9bR_HA) · [视频](https://www.youtube.com/watch?v=bm0_q9bR_HA) | 按本条器械与动作步骤练习。 |
-| 坐姿器械推胸 | Life Fitness / Hammer Strength | [来源](https://www.youtube.com/watch?v=sEfN2Gebvag) · [视频](https://www.youtube.com/watch?v=sEfN2Gebvag) | 按本条器械与动作步骤练习。 |
-| 器械推肩 | Andrew Kwong (DeltaBolic) | [来源](https://www.youtube.com/watch?v=Nxwict54-Q0) · [视频](https://www.youtube.com/watch?v=Nxwict54-Q0) | 播放前约 3 秒的中立近握示范；原片后段对比其他握法。请按本条的近身握法练习。 |
-| 器械侧平举 | Kenosha YMCA | [来源](https://www.kenoshaymca.org/y-videos/) · [视频](https://www.youtube.com/watch?v=0XXFSGnXJbY) | 以 LifeFitness 上臂垫式侧平举机为例，按现场机型调节座椅。 |
-| 哑铃前平举 | OPEX Fitness | [来源](https://www.youtube.com/watch?v=E-E0EqERFBg) · [视频](https://www.youtube.com/watch?v=E-E0EqERFBg) | 按本条器械与动作步骤练习。 |
-| 上斜反向飞鸟 | Christian Lawal - Mind & Body Coach | [来源](https://www.youtube.com/watch?v=G4KcUxqcXO8) · [视频](https://www.youtube.com/watch?v=G4KcUxqcXO8) | 示范使用约 45° 上斜凳，胸部持续贴靠背。 |
-| 哑铃侧平举 | MI Health Matters | [来源](https://msu-prod-2.dotcms.cloud/videos/dumbbell-side-lateral-raise) · [视频](https://www.youtube.com/watch?v=nnq4XzoUzWc) | 按本条器械与动作步骤练习。 |
-| 器械二头弯举 | Kenosha YMCA | [来源](https://www.kenoshaymca.org/y-videos/) · [视频](https://www.youtube.com/watch?v=l9Eg4xvSjTU) | 以 LifeFitness 斜垫式二头弯举机为例，按现场机型调节座椅与转轴。 |
-| 坐姿哑铃弯举 | MI Health Matters | [来源](https://msu-prod-2.dotcms.cloud/videos/seated-dumbbell-curls) · [视频](https://www.youtube.com/watch?v=oCeecrBNhfo) | 按本条器械与动作步骤练习。 |
-| 绳索三头下压 | Muscle & Strength | [来源](https://www.muscleandstrength.com/exercises/rope-tricep-extension.html) · [视频](https://www.youtube.com/watch?v=LzwgB15UdO8) | 按本条器械与动作步骤练习。 |
-| 哑铃斜向抬举 | Cloud Gym - Workouts | [来源](https://www.youtube.com/watch?v=Pcn6syNbmRc) · [视频](https://www.youtube.com/watch?v=Pcn6syNbmRc) | 此视频为单臂哑铃跨体斜举；按可控制的幅度抬至约肩高。 |
+每条的动作ID、BVID、CID、分集、发布者、原始标题、起始时间和核对日期保存在 online-catalog.json。公开元数据与官方预览画面已逐条核对；部分来源另做匿名播放及外链实播，未声称完整观看每段影片或在国内每种网络、真实 iPhone 上全部测试。第三方播放器可能受网络、登录及平台规则影响，不能保证永久可用。
 
-已核对发布者、一手来源与官方oEmbed返回的具体视频嵌入；对机型、握法等易混条目另做可见画面核对。未声称逐秒完整观看全部教学，也不承诺第三方平台永久可用。DVIDS与受限Vimeo候选因本次外站播放未通过而未进入正式清单。
+| 动作 | 发布者 | 具体视频 | 动作差异与提示 |
+|---|---|---|---|
+| 坐姿蹬腿 | 万拓体育 | [原站教学](https://www.bilibili.com/video/BV1Ur4y1Q7Dn/?p=1) | 示范为坐姿水平蹬腿机，按现场机型调节座椅与踏板。 |
+| 哑铃杯式深蹲 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1TT4y1p7YR/?p=1) | 按本条动作步骤练习。 |
+| 徒手深蹲 | 卓叔增重 | [原站教学](https://www.bilibili.com/video/BV1FB4y137gi/?p=1) | 按本条动作步骤练习。 |
+| 器械提踵 | 健身健美宝老师 | [原站教学](https://www.bilibili.com/video/BV133411z7ti/?p=1) | 视频用倾斜倒蹬机示范腿前伸式提踵，机型与独立提踵机不同；按现场器械说明操作，膝盖不要锁死。 |
+| 臀桥 | MidoriLau | [原站教学](https://www.bilibili.com/video/BV1kF411F7YG/?p=1) | 按本条动作步骤练习。 |
+| 前跨弓步蹲 | Eu爱体育 | [原站教学](https://www.bilibili.com/video/BV1Cb411t7vt/?p=1) | 按本条动作步骤练习。 |
+| 器械推肩 | ALEX健身频道 | [原站教学](https://www.bilibili.com/video/BV1b34y1G7rq/?p=1&t=285) | 从中立内握讲解开始，约 04:51 可见示范。后续包含其他握法；按本条近身握法练习。 |
+| 器械侧平举 | Rockywu健美圈 | [原站教学](https://www.bilibili.com/video/BV1v34y18733/?p=1) | 示范为坐姿上臂垫式侧平举机，按现场机型调整座椅。 |
+| 哑铃前平举 | 卡神说健身 | [原站教学](https://www.bilibili.com/video/BV1Ce4y1c7JA/?p=1) | 双哑铃同时前平举教学，包含错误与正确动作对照。 |
+| 上斜反向飞鸟 | 努力健身的小林 | [原站教学](https://www.bilibili.com/video/BV1Nt411F7vf/?p=1&t=10) | 示范为胸贴上斜凳的反向飞鸟；视频凳面约 30–45°，按现场可控角度调整。 |
+| 高位下拉 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1dC4y1r7nQ/?p=1) | 按本条动作步骤练习。 |
+| 坐姿高位划船 | 阿蔡有点菜 | [原站教学](https://www.bilibili.com/video/BV1VS4y1n784/?p=1) | 示范为胸垫支撑式高位划船，中立握把；握法和肘部轨迹会随机型不同。视频包含错误与正确对照。 |
+| 单臂哑铃划船 | 倪华香Yoki | [原站教学](https://www.bilibili.com/video/BV19Y411H7Qo/?p=1) | 按本条动作步骤练习。 |
+| 杠铃俯身划船 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1YG411S7o9/?p=1) | 按本条动作步骤练习。 |
+| 坐姿器械推胸 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1cUevzTEb4/?p=1) | 按本条动作步骤练习。 |
+| 器械二头弯举 | 万拓体育 | [原站教学](https://www.bilibili.com/video/BV1sb4y1B7s2/?p=1) | 示范为前方斜垫式弯举机，上臂贴垫；先调整座椅与转轴。 |
+| 坐姿哑铃弯举 | ALEX健身频道 | [原站教学](https://www.bilibili.com/video/BV1vsTw6JE9t/?p=1) | 视频为倾斜靠背、双臂同时弯举，并旋转至掌心向上；与本条较直立靠背、掌心向前的握法有差异。 |
+| 绳索三头下压 | ALEX健身频道 | [原站教学](https://www.bilibili.com/video/BV1fjMyzZEt5/?p=1) | 按本条动作步骤练习。 |
+| 平板支撑 | MidoriLau | [原站教学](https://www.bilibili.com/video/BV1sU4y1E76b/?p=1) | 按本条动作步骤练习。 |
+| 鸟狗式 | 爽总是熬夜 | [原站教学](https://www.bilibili.com/video/BV1ne411W7MV/?p=1) | 按本条动作步骤练习。 |
+| 卷腹 | 央视社教 | [原站教学](https://www.bilibili.com/video/BV1w54y1g75Y/?p=1) | 按本条动作步骤练习。 |
+| 坐姿器械卷腹 | ALEX健身频道 | [原站教学](https://www.bilibili.com/video/BV1cGSDYrEP7/?p=1) | 示范为坐姿卷腹机，按现场型号调整坐垫、握把和腿部固定。 |
+| 哑铃侧平举 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1UN41157u9/?p=1) | 按本条动作步骤练习。 |
+
+“哑铃斜向抬举”未找到可确认同一动作的国内影片，使用 PingFit 原创几何路径动画，并明确标为“动作示意 · 非真人教学”，不计入真人视频数。动画从对侧大腿前抬向同侧肩高后回程，动作说明参考 [ACE Diagonal Raise](https://www.acefitness.org/resources/everyone/exercise-library/371/diagonal-raise/)，图形、构图与代码独立绘制，未复制 ACE 图片。图示简化了关节运动，真人教学仍待补充。
