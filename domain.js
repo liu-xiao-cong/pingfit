@@ -1,4 +1,5 @@
-// Exercise notes are concise Chinese paraphrases of the linked ACE form guides.
+// Exercise notes are concise Chinese paraphrases of linked ACE / NASM / wger guides.
+// wger-derived entries retain their individual attribution and content licence.
 // MET estimates are gross energy estimates, including resting energy; see SOURCES.md.
 export const PARTS = [
   { id: 'all', label: '全部' }, { id: 'legs', label: '腿臀' },
@@ -121,6 +122,37 @@ export const EXERCISES = [
     ['调好座椅与配重，臀部坐稳，小腿靠住滚垫。', '双手握把，收紧腹部，控制身体向前卷曲。', '缓慢回到起点。'],
     ['避免用手臂猛拉或让配重快速回落。', '不同器械轨迹不同，先按机器说明调整。'],
     ['crunch', 'bird-dog'], '291/seated-crunch'),
+  exercise('barbell-bench-press', '杠铃平板卧推', 'chest', '杠铃 · 平凳', '进阶',
+    ['仰卧平凳，头、肩与臀部有支撑，双脚踩稳，双手握杠略宽于肩。', '保持肩部稳定，缓慢将杠铃下放至胸部附近的可控位置。', '平稳向上推回，控制杠铃，不在胸部反弹。'],
+    ['先熟悉空杆轨迹，并使用合适的保护架或请同伴协助。', '重量填写杠铃杆与杠铃片的合计重量。'],
+    ['dumbbell-bench-press', 'machine-chest-press'], '', {
+      sourceUrl: 'https://wger.de/api/v2/exerciseinfo/73/', sourceLabel: 'wger 动作库',
+      contentLicense: 'CC BY-SA 3.0', contentLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+      contentAuthor: 'sistab2', contentChanges: '中文简述，补充保护与重量记录口径。',
+    }),
+  exercise('dumbbell-romanian-deadlift', '哑铃罗马尼亚硬拉', 'legs', '哑铃', '进阶',
+    ['双脚与髋同宽站稳，双手各握一只哑铃，膝盖轻微弯曲。', '收紧腹部并保持背部稳定，将髋部向后移，双臂随身体缓慢下放。', '到腿后侧有拉伸感且背部仍可稳定的位置，将髋部带回并站起。'],
+    ['动作来自髋部折叠，不弓背或靠甩动身体提起哑铃；以能控制的幅度为准。', '双臂同时做，重量填写两只哑铃合计重量，先用轻重量熟悉轨迹。'],
+    ['glute-bridge', 'hamstring-curl'], '', {
+      sourceUrl: 'https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift',
+      sourceLabel: 'NASM Exercise Library',
+    }),
+  exercise('dumbbell-lateral-raise', '哑铃侧平举', 'shoulders', '哑铃', '入门',
+    ['站稳，髋与膝轻微弯曲，双手各握一只哑铃放在身体两侧。', '肘部保持轻微弯曲，双臂向两侧缓慢抬起至约肩高。', '保持身体稳定，沿原路控制下放。'],
+    ['选择能平稳放回的重量，不耸肩或晃动躯干借力。', '双臂同时做，重量填写两只哑铃合计重量；此动作与侧平举机分开记录。'],
+    ['lateral-raise', 'front-raise'], '', {
+      sourceUrl: 'https://wger.de/api/v2/exerciseinfo/348/', sourceLabel: 'wger 动作库',
+      contentLicense: 'CC BY-SA 3.0', contentLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+      contentAuthor: 'BFad07、wger.de', contentChanges: '中文简述，限定双哑铃版本并补充重量记录口径。',
+    }),
+  exercise('seated-cable-row', '坐姿窄握绳索划船', 'back', '低位绳索划船机 · 窄握把手', '入门',
+    ['坐稳并踩住踏板，膝盖微屈，双手握住窄握把手，背部保持稳定。', '保持上身直立，肘部贴近身体向后拉，把手靠近腹部。', '短暂停留后，缓慢伸直手臂回到起点。'],
+    ['不靠后仰或来回晃动上身带起配重。', '按器械配重标示记录；此动作为低位绳索划船，与胸垫式高位划船分开记录。'],
+    ['high-row', 'dumbbell-row'], '', {
+      sourceUrl: 'https://wger.de/api/v2/exerciseinfo/512/', sourceLabel: 'wger 动作库',
+      contentLicense: 'CC BY-SA 3.0', contentLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+      contentAuthor: 'wger.de', contentChanges: '中文简述，结合 ACE 核对低位窄握版本并补充重量记录口径。',
+    }),
 ];
 
 // Editable starting lists, not individualized programming or a prescribed load.

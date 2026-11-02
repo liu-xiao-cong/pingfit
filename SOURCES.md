@@ -1,10 +1,10 @@
 # 动作与热量数据来源
 
-核验日期：2026-10-25（Asia/Shanghai）。本文件记录 `domain.js` 的参考来源与产品计量约定。
+基础内容核验日期：2026-10-25；动作库扩充核验日期：2026-11-02（Asia/Shanghai）。本文件记录 `domain.js` 的参考来源与产品计量约定。
 
 ## 动作指导
 
-动作、所需器械、难度与动作要点参照 [American Council on Exercise 官方动作库](https://www.acefitness.org/resources/everyone/exercise-library/)，中文内容为简短转述。页面中的原始照片与视频未复制进 App；在动作详情可打开对应原文。动作卡片和装饰图片不能作为动作轨迹教学图。
+初始 27 个动作、所需器械、难度与动作要点参照 [American Council on Exercise 官方动作库](https://www.acefitness.org/resources/everyone/exercise-library/)，中文内容为简短转述。ACE 页面中的原始照片与视频未复制进 App；在动作详情可打开对应原文。原有装饰卡片不能作为动作轨迹教学图。新增动作与开放演示素材的来源分别列在下方。
 
 难度按 ACE beginner / intermediate / advanced 映射为入门 / 进阶 / 高阶。部位为便于查找的主分类，复合动作也会涉及其他肌群。替代动作只是同部位的查找入口，不代表器械、负荷或运动模式等价。器械的具体设置需结合现场型号。
 
@@ -39,6 +39,21 @@
 | 鸟狗式 | [Bird-dog](https://www.acefitness.org/resources/everyone/exercise-library/14/bird-dog/) |
 | 卷腹 | [Crunch](https://www.acefitness.org/resources/everyone/exercise-library/52/crunch/) |
 | 坐姿器械卷腹 | [Seated Crunch](https://www.acefitness.org/resources/everyone/exercise-library/291/seated-crunch/) |
+
+## 免费动作库扩充（2026-11-02）
+
+新增 4 个独立动作 ID，保留原有条目与训练记录。哑铃侧平举与器械侧平举、低位绳索划船与胸垫式高位划船分别建档，不能因中文名称相近而共用器械历史重量。新增条目的难度是查找用的起始标签；哑铃罗马尼亚硬拉按 NASM 的 Intermediate 归为进阶，杠铃卧推归为进阶，哑铃侧平举和低位窄握划船归为入门。标签不替代个人动作能力评估。
+
+下列 wger 来源按公开 API 中英语条目（`language: 2`）的逐条许可核验，未把视频许可误用于动作文字。中文步骤为简短改编，补充了 PingFit 的重量记录口径；这 3 个条目的中文改编同样采用 [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)。署名和许可字段随各动作保留在 `domain.js`，可在动作详情展示。
+
+| 动作 ID / 名称 | 文字来源与作者 | 许可及改动 |
+| --- | --- | --- |
+| `barbell-bench-press` 杠铃平板卧推 | [wger exercise 73 / English translation 192](https://wger.de/api/v2/exerciseinfo/73/)，sistab2 | CC BY-SA 3.0；中文简述，补充保护与杆片合计记录，未沿用“内胸/外胸”说法。 |
+| `dumbbell-lateral-raise` 哑铃侧平举 | [wger exercise 348 / English translation 148](https://wger.de/api/v2/exerciseinfo/348/)，BFad07、wger.de | CC BY-SA 3.0；中文简述，限定双哑铃同时版本，双只合计重量。 |
+| `seated-cable-row` 坐姿窄握绳索划船 | [wger exercise 512 / English translation 108](https://wger.de/api/v2/exerciseinfo/512/)，wger.de；用 [ACE Seated Row](https://www.acefitness.org/resources/everyone/exercise-library/48/seated-row/) 交叉核对 | CC BY-SA 3.0；中文简述，明确低位绳索与窄握把手，控制躯干并拉向腹部，按机器标示记重。 |
+| `dumbbell-romanian-deadlift` 哑铃罗马尼亚硬拉 | [NASM Dumbbell Romanian Deadlift](https://www.nasm.org/resource-center/exercise-library/dumbbell-romanian-deadlift) | 独立中文简短转述，未复制 NASM 照片/视频；补充双只哑铃合计记录。wger exercise 507 的英语描述仅有外部链接，且器械元数据写为杠铃，但 Goulart video 2 实际使用双哑铃，因此按实拍器械单独建档并采用精确的 NASM 哑铃动作文字参考。 |
+
+演示素材使用 Goulart 在 wger 发布并单独标注为 CC BY-SA 4.0 的真人视频。视频、抽帧海报及转码改动的逐条记录以 `assets/exercise-demos/catalog.json` 为准；视频来源许可与上述文字许可相互独立，不覆盖其余 App 代码或 ACE 参考内容。素材转换为便于手机播放的版本，不改变动作速度或伪造运动轨迹。
 
 ## MET 与热量
 
