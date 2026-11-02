@@ -2,6 +2,8 @@
 
 首版收录 7 个经过来源与姿态匹配核对的动作演示。
 
+0.3.1 另在 `online-catalog.json` 记录 24 个原作者在线视频，只使用原平台播放器，不在本目录存储影片。下述 CC BY-SA 许可仅适用于本地 Goulart MP4 与 JPG，不授予这 24 个外站影片的复制或离线下载权。
+
 本目录的真人演示视频来自 [wger 公开动作 API](https://wger.de/api/v2/video/)，原作者为 **Goulart**。每条素材分别核对原视频记录中的作者与许可，不以应用代码的开源许可代替媒体授权。
 
 MP4 与从视频抽取的 JPG 封面按 [Creative Commons Attribution–ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) 提供。再分发、改编这些素材时须保留作者、来源、许可链接与修改说明，并遵守该许可。它们的许可不改变 PingFit 程序代码和独立编写动作说明各自的许可。

@@ -1,4 +1,4 @@
-// Reviewed real demos. Per-item sources and CC licenses are retained in assets/exercise-demos/catalog.json.
+// Generated from assets/exercise-demos/catalog.json; retain the per-item sources and delivery rights.
 export const EXERCISE_DEMOS = [
   {
     "exerciseId": "hamstring-curl",

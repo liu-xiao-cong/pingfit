@@ -5,7 +5,7 @@ import {normalizeProfile,validateAppBackup} from './validation.js';
 import {getDailyCovers,mountCoverCarousel} from './cover-carousel.js';
 import {normalizeTrainingProgram,nextRoutine,rotationKey,createTrainingDraft,routineFromSession,replaceTrainingExercise,trainingHighlights} from './training.js';
 import {programHomeHTML,programManagerHTML,routineEditorHTML,highlightsHTML,swapExerciseHTML} from './training-ui.js';
-import {getExerciseDemo,demoCount,exerciseDemoHTML,mountExerciseDemo} from './exercise-media.js';
+import {getExerciseDemo,demoCount,offlineDemoCount,onlineDemoCount,exerciseDemoHTML,mountExerciseDemo} from './exercise-media.js';
 
 const $=s=>document.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -58,7 +58,7 @@ state.program={version:1,routines:[],rotation:[]};
 let routineDraft=null,programSaving=false;
 let coverCleanup=null;
 let demoCleanup=null;
-state.equipment='all';state.demoOnly=false;
+state.equipment='all';state.offlineDemoOnly=false;
 const completed=()=>state.sessions.filter(s=>s.status==='completed');
 const elapsed=s=>Math.max(0,Number(s?.elapsedSeconds||0)+(s?.runningSince?Math.floor((Date.now()-Number(s.runningSince))/1000):0));
 const summary=s=>summarizeSession({...s,elapsedSeconds:s.status==='active'?elapsed(s):s.elapsedSeconds},state.profile);
@@ -115,12 +115,12 @@ function renderTrain(){
   const q=state.search.trim().toLowerCase();
   const equipment=e=>e.equipment.split('·').map(t=>t.trim());
   const equipmentOptions=[...new Set(EXERCISES.flatMap(equipment))].sort((a,b)=>a.localeCompare(b,'zh-CN'));
-  const items=EXERCISES.filter(e=>(state.part==='all'||e.part===state.part)&&(state.equipment==='all'||equipment(e).includes(state.equipment))&&(!state.demoOnly||getExerciseDemo(e.id))&&(!q||[e.name,e.equipment,PARTS.find(p=>p.id===e.part)?.label].join(' ').toLowerCase().includes(q)));
+  const items=EXERCISES.filter(e=>(state.part==='all'||e.part===state.part)&&(state.equipment==='all'||equipment(e).includes(state.equipment))&&(!state.offlineDemoOnly||(getExerciseDemo(e.id)&&getExerciseDemo(e.id).kind!=='online'))&&(!q||[e.name,e.equipment,PARTS.find(p=>p.id===e.part)?.label].join(' ').toLowerCase().includes(q)));
   return `<div class="page-heading"><div><h1>把动作练明白</h1><p>先看演示与要点，再把动作加入你的训练。</p></div><button class="button soft small" data-action="recognize">${icon('scan')}拍照辅助录入</button></div>
-    <div class="library-summary"><div><span class="eyebrow">YOUR EXERCISE LIBRARY</span><p><strong>${EXERCISES.length}</strong> 个精选动作 <span>·</span> <strong>${demoCount}</strong> 个真人演示</p></div><button class="button soft small ${state.demoOnly?'is-active':''}" data-action="filter-demo" aria-pressed="${state.demoOnly}">${icon('play')}${state.demoOnly?'已筛选演示':'只看有演示'}</button></div>
+    <div class="library-summary"><div><span class="eyebrow">YOUR EXERCISE LIBRARY</span><p><strong>${EXERCISES.length}</strong> 个精选动作 <span>·</span> <strong>${demoCount}</strong> 个视频演示<small class="library-video-note">${offlineDemoCount} 个可保存离线 · ${onlineDemoCount} 个在线教学</small></p></div><button class="button soft small ${state.offlineDemoOnly?'is-active':''}" data-action="filter-offline-demo" aria-pressed="${state.offlineDemoOnly}">${icon('download')}${state.offlineDemoOnly?'已筛选离线':'可保存离线'}</button></div>
     <div class="library-search"><div class="search-field">${icon('search')}<input id="exercise-search" type="search" value="${esc(state.search)}" placeholder="搜索动作或器械，例如：哑铃卧推" aria-label="搜索动作或器械"></div><label class="equipment-filter"><span>器械</span><select id="equipment-filter" aria-label="按器械筛选"><option value="all">全部器械</option>${equipmentOptions.map(name=>`<option value="${esc(name)}" ${state.equipment===name?'selected':''}>${esc(name)}</option>`).join('')}</select></label></div>
-    <div class="filters">${PARTS.map(p=>`<button class="chip ${state.part===p.id?'active':''}" data-action="filter-part" data-id="${p.id}">${p.label}</button>`).join('')}</div><p class="library-result" role="status">找到 ${items.length} 个动作${state.demoOnly?' · 均附真人演示':''}</p>
-    <div class="exercise-grid">${items.map(e=>{const demo=getExerciseDemo(e.id);return `<article class="exercise-card ${state.selected.has(e.id)?'selected':''}"><button class="select-toggle" data-action="select-exercise" data-id="${e.id}" aria-label="${state.selected.has(e.id)?'取消选择':'选择'}${esc(e.name)}" aria-pressed="${state.selected.has(e.id)}">${state.selected.has(e.id)?icon('check'):icon('plus')}</button><button class="exercise-visual ${e.part} ${demo?'has-demo':''}" data-action="exercise" data-id="${e.id}" aria-label="查看${esc(e.name)}${demo?'动作演示':'动作指导'}">${demo?`<img src="${esc(demo.poster)}" alt="" loading="lazy" width="640" height="360"><span class="demo-badge">${icon('play')}真人演示</span>`:`<span class="big-type">${({legs:'LEG',back:'BACK',shoulders:'SHLDR',chest:'CHEST',arms:'ARM',core:'CORE'})[e.part]}</span>${icon(e.part)}`}</button><div class="exercise-content"><button data-action="exercise" data-id="${e.id}"><h3>${esc(e.name)}</h3><p>${esc(e.equipment)}</p><div class="exercise-card-bottom"><span>${PARTS.find(p=>p.id===e.part)?.label} · ${esc(e.difficulty)}</span>${icon('arrow')}</div></button></div></article>`;}).join('')}</div>
+    <div class="filters">${PARTS.map(p=>`<button class="chip ${state.part===p.id?'active':''}" data-action="filter-part" data-id="${p.id}">${p.label}</button>`).join('')}</div><p class="library-result" role="status">找到 ${items.length} 个动作${state.offlineDemoOnly?' · 可保存离线观看':''}</p>
+    <div class="exercise-grid">${items.map(e=>{const demo=getExerciseDemo(e.id);return `<article class="exercise-card ${state.selected.has(e.id)?'selected':''}"><button class="select-toggle" data-action="select-exercise" data-id="${e.id}" aria-label="${state.selected.has(e.id)?'取消选择':'选择'}${esc(e.name)}" aria-pressed="${state.selected.has(e.id)}">${state.selected.has(e.id)?icon('check'):icon('plus')}</button><button class="exercise-visual ${e.part} ${demo?.poster?'has-demo':demo?'has-online-demo':''}" data-action="exercise" data-id="${e.id}" aria-label="查看${esc(e.name)}${demo?'动作演示':'动作指导'}">${demo?.poster?`<img src="${esc(demo.poster)}" alt="" loading="lazy" width="640" height="360">`:`<span class="big-type">${({legs:'LEG',back:'BACK',shoulders:'SHLDR',chest:'CHEST',arms:'ARM',core:'CORE'})[e.part]}</span>${icon(e.part)}`}${demo?`<span class="demo-badge">${icon('play')}${demo.kind==='online'?'在线教学':'真人演示'}</span>`:''}</button><div class="exercise-content"><button data-action="exercise" data-id="${e.id}"><h3>${esc(e.name)}</h3><p>${esc(e.equipment)}</p><div class="exercise-card-bottom"><span>${PARTS.find(p=>p.id===e.part)?.label} · ${esc(e.difficulty)}</span>${icon('arrow')}</div></button></div></article>`;}).join('')}</div>
     ${!items.length?`<div class="empty-state"><span class="empty-icon">${icon('search')}</span><h3>还没找到这个动作</h3><p>试试其他器械名称，或清除筛选条件。</p><button class="button soft" data-action="clear-search">显示全部动作</button></div>`:''}
     ${state.selected.size?`<div class="selected-bar"><div><span>已选择 ${state.selected.size} 个动作</span><small>${state.active?'加入当前训练，继续你的节奏':'组数和重量可以在训练中调整'}</small></div><div class="flex"><button class="text-link" style="color:#c7d5bb" data-action="clear-selection">清空</button><button class="button lime small" data-action="start-selected">${state.active?'加入训练':'开始训练'} ${icon('arrow')}</button></div></div>`:''}`;
 }
@@ -220,7 +220,7 @@ async function persistProgram(program){const normalized=normalizeTrainingProgram
 async function handleAction(action,el){
   const id=el.dataset.id,s=state.active;
   if(storageBusy||finishing||programSaving)return toast('数据正在处理中，请稍候。');
-  const readActions=new Set(['filter-demo','close-modal','route','settings','install','resume','part','filter-part','clear-search','exercise','plan','history-period','calendar-day','clear-history-day','month','record','learn-exercise','platform-search','keyword','copy-query','view-photo','retry-editing','program-manager']);
+  const readActions=new Set(['filter-offline-demo','close-modal','route','settings','install','resume','part','filter-part','clear-search','exercise','plan','history-period','calendar-day','clear-history-day','month','record','learn-exercise','platform-search','keyword','copy-query','view-photo','retry-editing','program-manager']);
   if(state.readOnly&&!readActions.has(action))return toast('当前窗口为只读，请在正在使用的PingFit窗口中编辑。');
   if(action==='program-manager')return showProgramManager();
   if(action==='routine-new'){routineDraft=routineFromSession(createTrainingDraft({exerciseIds:['leg-press'],profile:state.profile}),'我的训练');return showRoutineEditor();}
@@ -252,10 +252,10 @@ async function handleAction(action,el){
   if(action==='install')return install();
   if(action==='resume')return navigate('workout');
   if(action==='choose-training'){if(s)return navigate('workout');return modal('今天，按自己的节奏练',`<p class="modal-subtitle">选一个模板开始，或自由挑选动作。训练过程中都可以调整。</p><div class="stack">${PLANS.map(p=>`<button class="modal-exercise" data-action="plan" data-id="${p.id}"><span class="exercise-number">${icon('dumbbell')}</span><span><h4>${esc(p.name)}</h4><p>${p.exerciseIds.length} 个动作 · 参考 ${p.minutes} 分钟</p></span><span class="check">${icon('right')}</span></button>`).join('')}</div><div class="form-actions"><button class="button soft" data-action="cardio-only">只记录有氧</button><button class="button lime" data-action="route" data-route="train">自由选择动作 ${icon('arrow')}</button></div>`,'choose');}
-  if(action==='part'){state.part=id;state.search='';state.equipment='all';state.demoOnly=false;return navigate('train');}
+  if(action==='part'){state.part=id;state.search='';state.equipment='all';state.offlineDemoOnly=false;return navigate('train');}
   if(action==='filter-part'){state.part=id;return render();}
-  if(action==='clear-search'){state.part='all';state.search='';state.equipment='all';state.demoOnly=false;return render();}
-  if(action==='filter-demo'){state.demoOnly=!state.demoOnly;return render();}
+  if(action==='clear-search'){state.part='all';state.search='';state.equipment='all';state.offlineDemoOnly=false;return render();}
+  if(action==='filter-offline-demo'){state.offlineDemoOnly=!state.offlineDemoOnly;return render();}
   if(action==='exercise')return showExercise(id);
   if(action==='plan')return showPlan(id);
   if(action==='start-plan'){const p=PLANS.find(p=>p.id===id);return startTraining(p.exerciseIds,p.name);}
