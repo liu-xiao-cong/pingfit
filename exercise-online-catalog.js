@@ -15,7 +15,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1Ur4y1Q7Dn/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1Ur4y1Q7Dn&cid=453865888&p=1&autoplay=0",
     "reviewedAt": "2026-11-02",
-    "note": "示范为坐姿水平蹬腿机，按现场机型调节座椅与踏板。"
+    "note": "示范为坐姿水平蹬腿机，按现场机型调节座椅与踏板。",
+    "poster": "https://i0.hdslb.com/bfs/archive/df7a0daa374747468d86648a966c204255c2a9d3.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1Ur4y1Q7Dn/"
   },
   {
     "exerciseId": "goblet-squat",
@@ -31,7 +33,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1TT4y1p7YR/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1TT4y1p7YR/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1TT4y1p7YR&cid=1396481017&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i0.hdslb.com/bfs/archive/b66a52125f947a4ce7f81ee478bc5434b012f253.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1TT4y1p7YR/"
   },
   {
     "exerciseId": "bodyweight-squat",
@@ -47,7 +51,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1FB4y137gi/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1FB4y137gi/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1FB4y137gi&cid=824678455&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/36af254bdb8f2e2dee5bba36f20e1a2b17f4980b.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1FB4y137gi/"
   },
   {
     "exerciseId": "calf-raise",
@@ -64,7 +70,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV133411z7ti/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV133411z7ti&cid=383853799&p=1&autoplay=0",
     "reviewedAt": "2026-11-02",
-    "note": "视频用倾斜倒蹬机示范腿前伸式提踵，机型与独立提踵机不同；按现场器械说明操作，膝盖不要锁死。"
+    "note": "视频用倾斜倒蹬机示范腿前伸式提踵，机型与独立提踵机不同；按现场器械说明操作，膝盖不要锁死。",
+    "poster": "https://i1.hdslb.com/bfs/archive/8c5be10ca2f75e4a00c86b55b0112c89f56a89c5.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV133411z7ti/"
   },
   {
     "exerciseId": "glute-bridge",
@@ -80,7 +88,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1kF411F7YG/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1kF411F7YG/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1kF411F7YG&cid=742705062&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i2.hdslb.com/bfs/archive/ff55e74b022960d4add1c0ebcf2482662e296159.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1kF411F7YG/"
   },
   {
     "exerciseId": "forward-lunge",
@@ -96,7 +106,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1Cb411t7vt/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1Cb411t7vt/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1Cb411t7vt&cid=78597066&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/c2f1a73ceb4f9f102c97d68bdbf7f2b2ca1fdb21.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1Cb411t7vt/"
   },
   {
     "exerciseId": "machine-shoulder-press",
@@ -114,7 +126,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1b34y1G7rq&aid=831572687&cid=1281513263&p=1&autoplay=0&danmaku=0&t=285",
     "reviewedAt": "2026-11-02",
     "startSeconds": 285,
-    "note": "从中立内握讲解开始，约 04:51 可见示范。后续包含其他握法；按本条近身握法练习。"
+    "note": "从中立内握讲解开始，约 04:51 可见示范。后续包含其他握法；按本条近身握法练习。",
+    "poster": "https://i1.hdslb.com/bfs/archive/afe7d4074e91f42906d7b4deff52b671809d1c52.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1b34y1G7rq/"
   },
   {
     "exerciseId": "lateral-raise",
@@ -131,7 +145,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1v34y18733/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1v34y18733&aid=809707058&cid=545645917&p=1&autoplay=0&danmaku=0",
     "reviewedAt": "2026-11-02",
-    "note": "示范为坐姿上臂垫式侧平举机，按现场机型调整座椅。"
+    "note": "示范为坐姿上臂垫式侧平举机，按现场机型调整座椅。",
+    "poster": "https://i0.hdslb.com/bfs/archive/a29ced6338813a91937fcf120af6458a6b7b9cf3.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1v34y18733/"
   },
   {
     "exerciseId": "front-raise",
@@ -148,7 +164,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1Ce4y1c7JA/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1Ce4y1c7JA&aid=652153866&cid=1016396199&p=1&autoplay=0&danmaku=0",
     "reviewedAt": "2026-11-02",
-    "note": "双哑铃同时前平举教学，包含错误与正确动作对照。"
+    "note": "双哑铃同时前平举教学，包含错误与正确动作对照。",
+    "poster": "https://i2.hdslb.com/bfs/archive/7f63f7e4ac685a1001ff5f36be0abdce5d4378f1.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1Ce4y1c7JA/"
   },
   {
     "exerciseId": "reverse-fly",
@@ -166,7 +184,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1Nt411F7vf&aid=61730698&cid=107353589&p=1&autoplay=0&danmaku=0&t=10",
     "reviewedAt": "2026-11-02",
     "startSeconds": 10,
-    "note": "示范为胸贴上斜凳的反向飞鸟；视频凳面约 30–45°，按现场可控角度调整。"
+    "note": "示范为胸贴上斜凳的反向飞鸟；视频凳面约 30–45°，按现场可控角度调整。",
+    "poster": "https://i0.hdslb.com/bfs/archive/b573cf0df3d0b7064eefb610f0a89fb186a56502.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1Nt411F7vf/"
   },
   {
     "exerciseId": "lat-pulldown",
@@ -182,7 +202,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1dC4y1r7nQ/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1dC4y1r7nQ/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1dC4y1r7nQ&cid=1418878844&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/68b046cfdedd7116ba1808cdb356fb486277e3ee.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1dC4y1r7nQ/"
   },
   {
     "exerciseId": "high-row",
@@ -199,7 +221,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1VS4y1n784/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1VS4y1n784&cid=764566603&p=1&autoplay=0",
     "reviewedAt": "2026-11-02",
-    "note": "示范为胸垫支撑式高位划船，中立握把；握法和肘部轨迹会随机型不同。视频包含错误与正确对照。"
+    "note": "示范为胸垫支撑式高位划船，中立握把；握法和肘部轨迹会随机型不同。视频包含错误与正确对照。",
+    "poster": "https://i0.hdslb.com/bfs/archive/bd03c81056b42f40bb0ef68589babb6c4d2b33b8.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1VS4y1n784/"
   },
   {
     "exerciseId": "dumbbell-row",
@@ -215,7 +239,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV19Y411H7Qo/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV19Y411H7Qo/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV19Y411H7Qo&cid=465844897&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i2.hdslb.com/bfs/archive/48b7fd2ded2a48ca505897db0721f7c3c79c2feb.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV19Y411H7Qo/"
   },
   {
     "exerciseId": "barbell-row",
@@ -231,7 +257,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1YG411S7o9/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1YG411S7o9/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1YG411S7o9&cid=1345038040&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/94abebae0a07938dbe15cefea90ffc48a52c06cf.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1YG411S7o9/"
   },
   {
     "exerciseId": "machine-chest-press",
@@ -247,7 +275,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1cUevzTEb4/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1cUevzTEb4/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1cUevzTEb4&cid=31889100586&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/b3970ae9ff42659147bb4583bf5baaefbf2bec99.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1cUevzTEb4/"
   },
   {
     "exerciseId": "machine-biceps-curl",
@@ -264,7 +294,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1sb4y1B7s2/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1sb4y1B7s2&aid=634549566&cid=454542309&p=1&autoplay=0&danmaku=0",
     "reviewedAt": "2026-11-02",
-    "note": "示范为前方斜垫式弯举机，上臂贴垫；先调整座椅与转轴。"
+    "note": "示范为前方斜垫式弯举机，上臂贴垫；先调整座椅与转轴。",
+    "poster": "https://i0.hdslb.com/bfs/archive/d57d1259c8116b78d5e8bf99fbcac841848be11a.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1sb4y1B7s2/"
   },
   {
     "exerciseId": "dumbbell-curl",
@@ -281,7 +313,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1vsTw6JE9t/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1vsTw6JE9t&aid=116839216651128&cid=39524238245&p=1&autoplay=0&danmaku=0",
     "reviewedAt": "2026-11-02",
-    "note": "视频为倾斜靠背、双臂同时弯举，并旋转至掌心向上；与本条较直立靠背、掌心向前的握法有差异。"
+    "note": "视频为倾斜靠背、双臂同时弯举，并旋转至掌心向上；与本条较直立靠背、掌心向前的握法有差异。",
+    "poster": "https://i0.hdslb.com/bfs/archive/a0773a9bf05ab351480186cf7a56603ac3f514ab.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1vsTw6JE9t/"
   },
   {
     "exerciseId": "triceps-pressdown",
@@ -297,7 +331,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1fjMyzZEt5/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1fjMyzZEt5/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1fjMyzZEt5&aid=114679082917131&cid=30484139256&p=1&autoplay=0&danmaku=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i0.hdslb.com/bfs/archive/6db4e40dfa340a3801e3f8047e718f6f33c7b590.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1fjMyzZEt5/"
   },
   {
     "exerciseId": "plank",
@@ -313,7 +349,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1sU4y1E76b/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1sU4y1E76b/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1sU4y1E76b&cid=392426147&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/bbe3acb9c6622042b31ef8b8e5810a68fb29c5d4.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1sU4y1E76b/"
   },
   {
     "exerciseId": "bird-dog",
@@ -330,7 +368,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1ne411W7MV/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1ne411W7MV&cid=192728512&p=1&autoplay=0",
     "reviewedAt": "2026-11-02",
-    "note": "此视频主要用图示讲解鸟狗式，重点看对侧手脚伸展和躯干稳定。"
+    "note": "此视频主要用图示讲解鸟狗式，重点看对侧手脚伸展和躯干稳定。",
+    "poster": "https://i1.hdslb.com/bfs/archive/e4e38c16b01080ef9155f9744bae8d3af4703915.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1ne411W7MV/"
   },
   {
     "exerciseId": "crunch",
@@ -346,7 +386,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1w54y1g75Y/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1w54y1g75Y/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1w54y1g75Y&cid=1040536618&p=1&autoplay=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/922f34cdcd07f1114ba20330713b68886aa1c33f.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1w54y1g75Y/"
   },
   {
     "exerciseId": "machine-crunch",
@@ -363,7 +405,9 @@ export const ONLINE_EXERCISE_DEMOS = [
     "sourceUrl": "https://www.bilibili.com/video/BV1cGSDYrEP7/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1cGSDYrEP7&cid=26598312055&p=1&autoplay=0",
     "reviewedAt": "2026-11-02",
-    "note": "示范为坐姿卷腹机，按现场型号调整坐垫、握把和腿部固定。"
+    "note": "示范为坐姿卷腹机，按现场型号调整坐垫、握把和腿部固定。",
+    "poster": "https://i2.hdslb.com/bfs/archive/68bcd88d1ae4001423b3821c713d0f054d0056ce.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1cGSDYrEP7/"
   },
   {
     "exerciseId": "dumbbell-lateral-raise",
@@ -379,6 +423,8 @@ export const ONLINE_EXERCISE_DEMOS = [
     "watchUrl": "https://www.bilibili.com/video/BV1UN41157u9/?p=1",
     "sourceUrl": "https://www.bilibili.com/video/BV1UN41157u9/",
     "embedUrl": "https://player.bilibili.com/player.html?bvid=BV1UN41157u9&aid=494590081&cid=1362949280&p=1&autoplay=0&danmaku=0",
-    "reviewedAt": "2026-11-02"
+    "reviewedAt": "2026-11-02",
+    "poster": "https://i1.hdslb.com/bfs/archive/c63c9169b177d68198e175d1b599c6890c26e281.jpg",
+    "posterSourceUrl": "https://www.bilibili.com/video/BV1UN41157u9/"
   }
 ];

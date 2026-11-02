@@ -122,3 +122,7 @@
 | 哑铃侧平举 | 凯圣王 | [原站教学](https://www.bilibili.com/video/BV1UN41157u9/?p=1) | 按本条动作步骤练习。 |
 
 “哑铃斜向抬举”未找到可确认同一动作的国内影片，使用 PingFit 原创几何路径动画，并明确标为“动作示意 · 非真人教学”，不计入真人视频数。动画从对侧大腿前抬向同侧肩高后回程，动作说明参考 [ACE Diagonal Raise](https://www.acefitness.org/resources/everyone/exercise-library/371/diagonal-raise/)，图形、构图与代码独立绘制，未复制 ACE 图片。图示简化了关节运动，真人教学仍待补充。
+
+### 视频封面
+
+0.3.4从同一BVID公开元数据的pic字段引用B站原视频封面，仅作该教学的预览，保留发布者与原站链接，不下载或重新托管。封面版权归原权利人，非Goulart CC素材。
