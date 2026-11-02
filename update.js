@@ -8,8 +8,7 @@ function openApp(){
   say('更新完成，正在打开包含视频的动作库…');location.replace(url.href);
 }
 function waitForInstall(reg){
-  if(reg.waiting)return Promise.resolve(reg.waiting);
-  if(!reg.installing)return Promise.resolve(null);
+  if(!reg.installing)return Promise.resolve(reg.waiting||null);
   return new Promise((resolve,reject)=>{
     const worker=reg.installing;
     const timer=setTimeout(()=>finish(new Error('下载时间较长，请保持网络后重试。')),45000);
@@ -27,8 +26,8 @@ button.addEventListener('click',async()=>{
   try{
     say('正在检查并下载新版动作与视频入口…');
     const reg=await navigator.serviceWorker.register(new URL('./sw.js',location.href),{updateViaCache:'none'});
-    if(!reg.waiting&&!reg.installing)await reg.update();
-    const worker=reg.waiting||await waitForInstall(reg);
+    if(!reg.installing)await reg.update();
+    const worker=await waitForInstall(reg);
     if(!worker||worker.state==='activated'||navigator.serviceWorker.controller===worker){openApp();return;}
     await new Promise((resolve,reject)=>{
       const timer=setTimeout(()=>reject(new Error('应用切换尚未完成，请重试。')),15000);
