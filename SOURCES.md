@@ -126,3 +126,7 @@
 ### 视频封面
 
 0.3.4从同一BVID公开元数据的pic字段引用B站原视频封面，仅作该教学的预览，保留发布者与原站链接，不下载或重新托管。封面版权归原权利人，非Goulart CC素材。
+
+## 本地训练复盘
+
+本地规则复盘复用本文MET与热量口径；设备/手填热量单独列出。同动作、同器械、相同计量方式比较此前已完成正式组，热身和未来记录不参与。一般训练与恢复提示参考 [Mayo Clinic 力量训练要点](https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842)。提示不等同个体化处方，未接入云端AI。
